@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  app:
+    build: ./build_app
+    ports:
+      - "8080:8000"
+    networks:
+      pyAPI:
+        ipv4_address: 192.168.1.2
+    depends_on:
+      - db
+    links:
+      - db
+    volumes:
+      - pyAPI_app_data:/home/src/
+  db:
+    build: ./build_db
+    networks:
+      pyAPI:
+        ipv4_address: 192.168.1.3
+    volumes:
+      - pyAPI_mysql_data:/var/lib/mysql
+networks:
+  pyAPI:
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.1.0/24
+volumes:
+  pyAPI_mysql_data:
+  pyAPI_app_data:
