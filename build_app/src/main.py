@@ -21,9 +21,8 @@ def get_main(id: int):
     d = "responce var"
     try:
         id = int(id)
-    except:
-        d = {"success": False, "reason": "Invalid Data"}
-        return d
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Invalid Data")
     found = 0
     my_cur.execute(f"select * from contact where id='{id}';")
     for i in my_cur:
@@ -32,8 +31,7 @@ def get_main(id: int):
     if found != 0:
         return d
     else:
-        d = {"success": False, "reason": "User Not found"}
-        return d
+        raise HTTPException(status_code=404, detail="User Not found")
 
 
 @app.post("/")
@@ -78,8 +76,7 @@ def del_main(id: int):
         d = {"success": True, "responce": "Removed ID {}".format(id)}
         return d
     else:
-        d = {"success": False, "reason": "User Not found"}
-        return d
+        raise HTTPException(status_code=404, detail="User Not found")
 
 
 @app.put("/")
@@ -123,5 +120,4 @@ def put_main(
         d = {"success": True, "responce": "Updated ID {}".format(id)}
         return d
     else:
-        d = {"success": False, "reason": "User Not found"}
-        return d
+        raise HTTPException(status_code=404, detail="User Not found")
