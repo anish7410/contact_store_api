@@ -9,7 +9,7 @@
 
 **The Api can store Name,Contact,Address In Database.<br>It comes with build source code of docker Fully customizable <br> It can perform _GET/POST/PUT/DELETE_ Operation<br>I is based on [FastAPI](https://fastapi.tiangolo.com/)<br>Installation is _simple_ It si based on [docker-compose](https://docs.docker.com/compose/) so _OneClick_ Implementation**
 
-#### !! NOTE : Your host network CIDR can Conflict with docker network so accordingly change the <br> - subnet in compose network <br> - ipv4 address of containers <br> <br> For E.g 10.0.0.1/24 (default in this example) , 12.0.0.1/24 , 192.168.10.1/24
+#### !! NOTE : Your host network CIDR can Conflict with docker network so accordingly change the <br> - subnet in compose network <br> - ipv4 address of containers <br> <br> For E.g 10.0.0.0/24 (default in this example) , 12.0.0.1/24 , 192.168.10.1/24
 
 ## API Request and Responce
 
